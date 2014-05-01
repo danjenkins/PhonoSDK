@@ -374,10 +374,10 @@
     if (typeof Phono == 'undefined') {
         var util = require("util");
         Phono = {
-            log:{debug:function(mess){util.print(mess);}}
+            log:{debug:function(mess){}}
         };
         $ = {isFunction:function(){}};
-	require("./phono.util.js");
+	   require("./phono.util.js");
     }
 
     Phono.sdp = {
@@ -782,33 +782,21 @@
 
     if (typeof window === 'undefined') {
         // Unit tests under node.js
-
-        var SDP ={
-		chromeVideo:"v=0\r\no=- 466604799 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=msid-semantic: WMS 0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7k\r\nm=audio 51233 RTP/SAVPF 109 0 8 101\r\nc=IN IP4 192.67.4.10\r\na=rtcp:62387 IN IP4 192.67.4.10\r\na=candidate:2812693356 1 udp 2113937151 192.67.4.10 51233 typ host generation 0\r\na=candidate:2812693356 2 udp 2113937150 192.67.4.10 62387 typ host generation 0\r\na=ice-ufrag:A7xRf5m5sDv8Qnda\r\na=ice-pwd:sIxXUQ1R5euE6QY/ntMS9xpu\r\na=fingerprint:sha-256 A4:06:4B:AC:92:8B:FA:A0:CE:56:78:A4:B9:A4:2A:41:16:DD:D7:6C:E9:D2:71:81:20:99:F1:3A:4E:C7:71:8D\r\na=sendrecv\r\na=mid:audio\r\na=rtpmap:109 opus/48000/2\r\na=fmtp:109 minptime=10\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:101 telephone-event/8000\r\na=maxptime:60\r\na=ssrc:3307173785 cname:3iNNp5tCCbH8QdE8\r\na=ssrc:3307173785 msid:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7k 0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7ka0\r\na=ssrc:3307173785 mslabel:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7k\r\na=ssrc:3307173785 label:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7ka0\r\nm=video 51841 RTP/SAVPF 120\r\nc=IN IP4 192.67.4.10\r\na=rtcp:58612 IN IP4 192.67.4.10\r\na=candidate:2812693356 1 udp 2113937151 192.67.4.10 51841 typ host generation 0\r\na=candidate:2812693356 2 udp 2113937150 192.67.4.10 58612 typ host generation 0\r\na=ice-ufrag:vYDcPP0KgdP9VHjY\r\na=ice-pwd:JEkYOiuKuiny1sJNZlBHZyZ5\r\na=fingerprint:sha-256 A4:06:4B:AC:92:8B:FA:A0:CE:56:78:A4:B9:A4:2A:41:16:DD:D7:6C:E9:D2:71:81:20:99:F1:3A:4E:C7:71:8D\r\na=sendrecv\r\na=mid:video\r\na=rtpmap:120 VP8/90000\r\na=ssrc:1230164494 cname:3iNNp5tCCbH8QdE8\r\na=ssrc:1230164494 msid:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7k 0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7kv0\r\na=ssrc:1230164494 mslabel:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7k\r\na=ssrc:1230164494 label:0c2n3jRwGhjfwzKzLxMER8lpRIHMQaZiIw7kv0\r\n",
-
-	chromeAudio:"v=0\r\no=- 2751679977 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio\r\na=msid-semantic: WMS YyMaveYaWtkfdWeZtSHs3AHFuH4TEYh4MZDh\r\nm=audio 63231 RTP/SAVPF 111 103 104 0 8 107 106 105 13 126\r\nc=IN IP4 192.67.4.11\r\na=rtcp:63231 IN IP4 192.67.4.11\r\na=candidate:521808905 1 udp 2113937151 192.67.4.11 63231 typ host generation 0\r\na=candidate:521808905 2 udp 2113937151 192.67.4.11 63231 typ host generation 0\r\na=ice-ufrag:1VZUXywcfSTmvPBK\r\na=ice-pwd:NHrjWPuvIlyBQD7UVw4zi/4F\r\na=ice-options:google-ice\r\na=fingerprint:sha-256 49:1E:A3:EB:78:C2:89:55:5D:0D:6E:F2:B7:41:50:DB:10:C4:B2:54:8F:D8:24:A5:E8:56:0A:56:F4:BA:3A:ED\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=sendrecv\r\na=mid:audio\r\na=rtcp-mux\r\na=crypto:0 AES_CM_128_HMAC_SHA1_32 inline:MpqMpDpEDjNDfpquFL8jIkO9oLp2Dp4NOYiSmrea\r\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:/yAvMdC0p1e/4c/Jc6ljepmHpIuHV9jO3FyrrTX4\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 minptime=10\r\na=rtpmap:103 ISAC/16000\r\na=rtpmap:104 ISAC/32000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:107 CN/48000\r\na=rtpmap:106 CN/32000\r\na=rtpmap:105 CN/16000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:126 telephone-event/8000\r\na=maxptime:60\r\na=ssrc:3334051080 cname:ECpt57S24HzaX1WY\r\na=ssrc:3334051080 msid:YyMaveYaWtkfdWeZtSHs3AHFuH4TEYh4MZDh YyMaveYaWtkfdWeZtSHs3AHFuH4TEYh4MZDha0\r\na=ssrc:3334051080 mslabel:YyMaveYaWtkfdWeZtSHs3AHFuH4TEYh4MZDh\r\na=ssrc:3334051080 label:YyMaveYaWtkfdWeZtSHs3AHFuH4TEYh4MZDha0\r\n",
-
-	firefoxVideo:"v=0\r\no=Mozilla-SIPUA-24.0a1 12643 0 IN IP4 0.0.0.0\r\ns=SIP Call\r\nt=0 0\r\na=ice-ufrag:1a870bf3\r\na=ice-pwd:948d30c7fe15b95a7bd63743ae84ac2e\r\na=fingerprint:sha-256 1C:D2:EC:A0:51:89:35:BE:84:4B:BC:11:F3:D4:D6:C7:F7:39:52:C5:2D:55:88:1D:61:24:7A:54:20:8A:AE:C2\r\nm=audio 50859 RTP/SAVPF 109 0 8 101\r\nc=IN IP4 192.67.4.11\r\na=rtpmap:109 opus/48000/2\r\na=ptime:20\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:101 telephone-event/8000\r\na=fmtp:101 0-15\r\na=sendrecv\r\na=candidate:0 1 UDP 2113601791 192.67.4.11 50859 typ host\r\na=candidate:0 2 UDP 2113601790 192.67.4.11 53847 typ host\r\nm=video 62311 RTP/SAVPF 120\r\nc=IN IP4 192.67.4.11\r\na=rtpmap:120 VP8/90000\r\na=sendrecv\r\na=candidate:0 1 UDP 2113601791 192.67.4.11 62311 typ host\r\na=candidate:0 2 UDP 2113601790 192.67.4.11 54437 typ host\r\n",
-        
-
-	firefoxAudio:"v=0\r\no=Mozilla-SIPUA-24.0a1 20557 0 IN IP4 0.0.0.0\r\ns=SIP Call\r\nt=0 0\r\na=ice-ufrag:66600851\r\na=ice-pwd:aab7c3c8d881f6406eff1f1ff2e3bc5e\r\na=fingerprint:sha-256 C3:C4:98:95:D0:58:B1:D2:F9:72:A0:44:EB:C7:C4:49:95:8F:EE:00:05:10:82:A8:6E:F6:4A:DF:43:A3:2A:16\r\nm=audio 56026 RTP/SAVPF 109 0 8 101\r\nc=IN IP4 192.67.4.11\r\na=rtpmap:109 opus/48000/2\r\na=ptime:20\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:101 telephone-event/8000\r\na=fmtp:101 0-15\r\na=sendrecv\r\na=candidate:0 1 UDP 2113601791 192.67.4.11 56026 typ host\r\na=candidate:0 2 UDP 2113601790 192.67.4.11 56833 typ host\r\n",
-
-            chromeRtcpFb:"v=0\r\no=- 6227611786937931562 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio video\r\na=msid-semantic: WMS 0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRv\r\nm=audio 50388 RTP/SAVPF 111 103 104 0 8 106 105 13 126\r\nc=IN IP4 78.150.48.131\r\na=rtcp:50388 IN IP4 78.150.48.131\r\na=candidate:3100903175 1 udp 2113937151 192.168.0.22 50388 typ host generation 0\r\na=candidate:3100903175 2 udp 2113937151 192.168.0.22 50388 typ host generation 0\r\na=candidate:1321500371 1 udp 1845501695 78.150.48.131 50388 typ srflx raddr 192.168.0.22 rport 50388 generation 0\r\na=candidate:1321500371 2 udp 1845501695 78.150.48.131 50388 typ srflx raddr 192.168.0.22 rport 50388 generation 0\r\na=candidate:4132961271 1 tcp 1509957375 192.168.0.22 0 typ host generation 0\r\na=candidate:4132961271 2 tcp 1509957375 192.168.0.22 0 typ host generation 0\r\na=ice-ufrag:+cegK9S9iT7r2aHD\r\na=ice-pwd:DGWCo4/RklpitTmYz4AsXpV4\r\na=ice-options:google-ice\r\na=fingerprint:sha-256 D2:C8:80:23:F3:86:45:B3:C0:43:71:4E:DB:F4:BE:86:9B:B5:F3:D9:60:38:0F:B3:25:3F:68:A1:4F:A2:29:EA\r\na=setup:actpass\r\na=mid:audio\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=sendrecv\r\na=rtcp-mux\r\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:VH63QXLG3CblsU2mP538gpep+yRmfhfCEvTK815O\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 minptime=10\r\na=rtpmap:103 ISAC/16000\r\na=rtpmap:104 ISAC/32000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:106 CN/32000\r\na=rtpmap:105 CN/16000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:126 telephone-event/8000\r\na=maxptime:60\r\na=ssrc:3547047282 cname:SS1NySdXoBxXcPcN\r\na=ssrc:3547047282 msid:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRv 0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRva0\r\na=ssrc:3547047282 mslabel:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRv\r\na=ssrc:3547047282 label:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRva0\r\nm=video 50388 RTP/SAVPF 100 116 117\r\nc=IN IP4 78.150.48.131\r\na=rtcp:50388 IN IP4 78.150.48.131\r\na=candidate:3100903175 1 udp 2113937151 192.168.0.22 50388 typ host generation 0\r\na=candidate:3100903175 2 udp 2113937151 192.168.0.22 50388 typ host generation 0\r\na=candidate:1321500371 1 udp 1845501695 78.150.48.131 50388 typ srflx raddr 192.168.0.22 rport 50388 generation 0\r\na=candidate:1321500371 2 udp 1845501695 78.150.48.131 50388 typ srflx raddr 192.168.0.22 rport 50388 generation 0\r\na=candidate:4132961271 1 tcp 1509957375 192.168.0.22 0 typ host generation 0\r\na=candidate:4132961271 2 tcp 1509957375 192.168.0.22 0 typ host generation 0\r\na=ice-ufrag:+cegK9S9iT7r2aHD\r\na=ice-pwd:DGWCo4/RklpitTmYz4AsXpV4\r\na=ice-options:google-ice\r\na=fingerprint:sha-256 D2:C8:80:23:F3:86:45:B3:C0:43:71:4E:DB:F4:BE:86:9B:B5:F3:D9:60:38:0F:B3:25:3F:68:A1:4F:A2:29:EA\r\na=setup:actpass\r\na=mid:video\r\na=extmap:2 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=sendrecv\r\na=rtcp-mux\r\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:VH63QXLG3CblsU2mP538gpep+yRmfhfCEvTK815O\r\na=rtpmap:100 VP8/90000\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 goog-remb\r\na=rtpmap:116 red/90000\r\na=rtpmap:117 ulpfec/90000\r\na=ssrc:1617029726 cname:SS1NySdXoBxXcPcN\r\na=ssrc:1617029726 msid:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRv 0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRvv0\r\na=ssrc:1617029726 mslabel:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRv\r\na=ssrc:1617029726 label:0ZT6IhacZdslMZvZ93R5lwxHP9kMSzGbrdRvv0\r\n" 
-
+        module.exports = Phono.sdp
 };
 
-        for (s in SDP){
-		var bro = s;
-                var bs = SDP[s];	
-		Phono.log.debug("testing "+ s);
-		var sdpObj = Phono.sdp.parseSDP(bs);
-		Phono.log.debug(JSON.stringify(sdpObj,null," "));
+  //       for (s in SDP){
+		// var bro = s;
+  //               var bs = SDP[s];	
+		// Phono.log.debug("testing "+ s);
+		// var sdpObj = Phono.sdp.parseSDP(bs);
+		// Phono.log.debug(JSON.stringify(sdpObj,null," "));
 
-		var resultSDP = Phono.sdp.buildSDP(sdpObj);
-		Phono.log.debug(s+ " Resulting SDP:");
-		Phono.log.debug(resultSDP);
-        }
+		// var resultSDP = Phono.sdp.buildSDP(sdpObj);
+		// Phono.log.debug(s+ " Resulting SDP:");
+		// Phono.log.debug(resultSDP);
+  //       }
 
-    }
+  //   }
     
 }()); 
